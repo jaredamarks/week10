@@ -15,8 +15,16 @@ public class ProjectsApp {
 	private ProjectService projectService = new ProjectService();
 	
 	private List<String> operations = List.of(
-			"1) Add a project");
+			"1) Add a project",
+			"2) List projects");
 			
+	@SuppressWarnings("unused")
+	private void listProjects() {
+		List<Project> projects = projectService.fetchAllProjects();
+		System.out.println("\nProjects:");
+		
+		projects.forEach(project -> System.out.println("  " + project.getProjectId() + ": " + project.getProjectName()));
+	}
 	
 	public static void main(String[] args) {
 		new ProjectsApp().processUserSelection();
